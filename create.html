@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,6 +29,30 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+<style type="text/css">
+                        a.btn {
+                            font-family: Montserrat,Helvetica,Arial,sans-serif;
+                                text-transform: uppercase;
+                        }
+
+                        .loading-icon {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  margin:50px auto;
+  -webkit-animation: fa-spin 2s infinite linear;
+  animation: fa-spin 2s infinite linear;
+}
+
+.loading-icon:before {
+  content: "\f110";
+  font-family: FontAwesome;
+  font-size:20px;
+  position: absolute;
+  top: 0;
+}
+                    </style>
 
 </head>
 
@@ -80,8 +103,89 @@
                 </div>
             </div>
             <div class="row">
+                <div class="col-md-4">
+                    <h3>Take your photos</h3>
+                    <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut purus tortor, lobortis eu maximus a, sagittis quis nulla. Nam volutpat eleifend mollis. Pellentesque malesuada consectetur nulla vitae tincidunt. Nulla facilisi. Fusce massa nisl, sodales quis scelerisque vel, vestibulum at metus. Nam a cursus elit, sit amet vulputate tellus. Nullam sollicitudin cursus lacinia. Praesent viverra nisi purus, eu eleifend odio rutrum id.
+                    </p>
+                </div>
+                <div class="col-md-2"></div>
                 <div class="col-md-6">
+                    <h3 class="text-right">And Upload them</h3><br>
 
+                    <p>
+                        <h4>74 Files Selected</h4>
+                        <div class="progress" style="height:40px;">
+                          <div id="progress-bar" class="progress-bar" role="progressbar" style="width:0%;"></div>
+                        </div>
+                        <a href="#" onclick="doProgress();" class="btn btn-success"><i class="fa fa-upload"></i> Upload &amp; Stitch</a>
+                    </p>
+
+
+                    <script type="text/javascript">
+                    function doProgress() {
+                        $('#progress-bar').show();
+
+                        var i = 0;                     //  set your counter to 1
+
+                        function myLoop (delay) {           //  create a loop function
+                           setTimeout(function () {    //  call a 3s setTimeout when the loop is called
+
+                            if (i<101) {
+                                $('#progress-bar').css('width', i+'%')
+                            };
+
+                            if (i == 101) {
+                                $('#sstatus').fadeIn();
+                                $('#sstatusspinner').fadeIn();
+                                $('#sstatus').text('Opening Files...');
+                            };
+
+                            if (i == 102) {
+                                $('#sstatus').text('Stitching Photos...');
+                            };
+
+                            if (i == 103) {
+                                $('#sstatus').text('Rendering Tour...');
+                            };
+
+                            if (i == 104) {
+                                $('#sstatusspinner').fadeOut();
+                                $('#sstatus').fadeOut(function() {
+                                    $('#nextbutton').fadeIn();
+                                });
+                            };
+
+                              i++;                     //  increment the counter
+                              if (i < 33) {
+                                 myLoop(25);
+                              } else if (i<36) {
+                                myLoop(500);
+                              } else if (i < 75) {
+                                myLoop(100);
+                              } else if (i < 76) {
+                                myLoop(1500);
+                              } else if (i < 101) {
+                                myLoop(100);
+                              } else if (i<102) {
+                                myLoop(1000);
+                              } else if (i<103) {
+                                myLoop(1000);
+                              } else if (i<104) {
+                                myLoop(5000);
+                              } else if (i<105) {
+                                myLoop(4000);
+                              };
+                           }, delay)
+                        }
+
+                        myLoop(70);                      //  start the loop
+                    }
+                    </script>
+                </div>
+                <div class="col-md-12 text-center" style="padding-top: 75px">
+                    <a id="nextbutton" href="create2.html" class="btn btn-xl btn-primary" style="display: none;">Step 2 <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></a>
+                    <h3 style="display: none;" id="sstatus"></h3><img id="sstatusspinner" style="display: none;" width="30px" src="spinner.gif">
                 </div>
             </div>
         </div>
